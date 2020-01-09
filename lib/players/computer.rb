@@ -1,11 +1,16 @@
-#Problem: For an empty board, the first if statement will always be 
-
 module Players
   class Computer < Player
 
     def move(board)
-      #if board.cells == [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      if board.cells[0] == board.cells[1] && board.cells[2] == " "
+      if board.cells == [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+        "4"
+      elsif board.turn_count < 3
+        num = rand(1..9).to_s
+        while !board.valid_move?(num) do
+          num = rand(1..9).to_s
+        end #while
+        num
+      elsif board.cells[0] == board.cells[1] && board.cells[2] == " "
         "3"
       elsif board.cells[0] == board.cells[2] && board.cells[1] == " "
         "2"
